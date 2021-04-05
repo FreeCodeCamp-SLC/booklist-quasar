@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="bg-white text-primary">
         <q-btn
           flat
           dense
@@ -12,10 +12,14 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Bookist
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div class="q-py-md">
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/img/avatar.png" />
+          </q-avatar>
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -23,16 +27,13 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-grey-1"
+      content-class="bg-primary"
     >
       <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
+        <q-item-label header class="text-blue-1 text-inter text-h5">
+          Bookist
         </q-item-label>
-        <EssentialLink
+        <MenuLinks
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
@@ -47,61 +48,43 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import MenuLinks from "components/MenuLinks.vue";
 
 const linksData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: "Lists",
+    icon: "mdi-book-open-blank-variant"
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: "Favorites",
+    icon: "mdi-emoticon-happy-outline"
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: "Series / Collection",
+    icon: "mdi-checkbox-multiple-blank-outline"
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: "Articles",
+    icon: "mdi-newspaper-variant-outline"
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    title: "Dashboard",
+    icon: "mdi-chart-bar"
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    title: "Add Item",
+    icon: "mdi-plus-circle-outline"
   }
 ];
 
 export default {
-  name: 'MainLayout',
-  components: { EssentialLink },
-  data () {
+  name: "MainLayout",
+  components: { MenuLinks },
+  data() {
     return {
       leftDrawerOpen: false,
       essentialLinks: linksData
-    }
+    };
   }
-}
+};
 </script>
