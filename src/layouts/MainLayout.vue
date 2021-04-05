@@ -53,27 +53,33 @@ import MenuLinks from "components/MenuLinks.vue";
 const linksData = [
   {
     title: "Lists",
-    icon: "mdi-book-open-blank-variant"
+    icon: "mdi-book-open-blank-variant",
+    to: "/lists"
   },
   {
     title: "Favorites",
-    icon: "mdi-emoticon-happy-outline"
+    icon: "mdi-emoticon-happy-outline",
+    to: ""
   },
   {
     title: "Series / Collection",
-    icon: "mdi-checkbox-multiple-blank-outline"
+    icon: "mdi-checkbox-multiple-blank-outline",
+    to: ""
   },
   {
     title: "Articles",
-    icon: "mdi-newspaper-variant-outline"
+    icon: "mdi-newspaper-variant-outline",
+    to: ""
   },
   {
     title: "Dashboard",
-    icon: "mdi-chart-bar"
+    icon: "mdi-chart-bar",
+    to: ""
   },
   {
     title: "Add Item",
-    icon: "mdi-plus-circle-outline"
+    icon: "mdi-plus-circle-outline",
+    to: ""
   }
 ];
 

@@ -1,5 +1,5 @@
 <template>
-  <q-item clickable tag="a" target="_blank">
+  <q-item clickable tag="a" target="_blank" :to="to">
     <q-item-section v-if="icon" avatar>
       <q-icon class="text-blue-1" style="font-size: 2em" :name="icon" />
     </q-item-section>
@@ -22,6 +22,10 @@ export default {
     },
 
     icon: {
+      type: String,
+      default: ""
+    },
+    to: {
       type: String,
       default: ""
     }
