@@ -1,16 +1,19 @@
+import { authGuard } from "../auth/authGuard";
+
 const routes = [
   {
-    path: "/dashboard",
+    path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { path: "", component: () => import("pages/Index.vue") },
-      { path: "/lists", component: () => import("pages/Lists.vue") }
+      { path: "lists", component: () => import("pages/Lists.vue") },
+      {
+        path: "profile",
+        component: () => import("pages/Profile.vue"),
+        beforeEnter: authGuard
+      },
+      { path: "signin", component: () => import("pages/SignIn.vue") }
     ]
-  },
-  {
-    path: "/",
-    component: () => import("layouts/NoAuth.vue"),
-    children: [{ path: "/", component: () => import("pages/SignIn.vue") }]
   },
 
   // Always leave this as last one,

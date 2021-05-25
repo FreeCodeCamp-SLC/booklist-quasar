@@ -38,6 +38,51 @@
           :key="link.title"
           v-bind="link"
         />
+        <q-item v-if="$auth.isAuthenticated" clickable tag="a" to="/profile">
+          <q-item-section avatar>
+            <q-icon
+              class="text-blue-1"
+              style="font-size: 2em"
+              name="mdi-account"
+            />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label class="text-blue-1 text-inter" style="font-size: 1rem"
+              >Account</q-item-label
+            >
+          </q-item-section>
+        </q-item>
+        <q-item v-if="$auth.isAuthenticated" clickable tag="a" @click="logout">
+          <q-item-section avatar>
+            <q-icon
+              class="text-blue-1"
+              style="font-size: 2em"
+              name="mdi-exit-run"
+            />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label class="text-blue-1 text-inter" style="font-size: 1rem"
+              >Sign Out</q-item-label
+            >
+          </q-item-section>
+        </q-item>
+        <q-item v-if="!$auth.isAuthenticated" clickable tag="a" @click="login">
+          <q-item-section avatar>
+            <q-icon
+              class="text-blue-1"
+              style="font-size: 2em"
+              name="mdi-log-in"
+            />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label class="text-blue-1 text-inter" style="font-size: 1rem"
+              >Sign In</q-item-label
+            >
+          </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
@@ -91,6 +136,16 @@ export default {
       leftDrawerOpen: false,
       essentialLinks: linksData
     };
+  },
+  methods: {
+    login() {
+      this.$auth.loginWithRedirect();
+    },
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin
+      });
+    }
   }
 };
 </script>
