@@ -15,8 +15,7 @@ const routes = [
         path: "profile",
         component: () => import("pages/Profile.vue"),
         beforeEnter: authGuard
-      },
-      { path: "signin", component: () => import("pages/SignIn.vue") }
+      }
     ]
   },
 
