@@ -6,7 +6,11 @@ const routes = [
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { path: "", component: () => import("pages/Index.vue") },
-      { path: "lists", component: () => import("pages/Lists.vue") },
+      {
+        path: "lists",
+        component: () => import("pages/Lists.vue"),
+        beforeEnter: authGuard
+      },
       {
         path: "profile",
         component: () => import("pages/Profile.vue"),
